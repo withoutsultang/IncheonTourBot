@@ -17,7 +17,7 @@ def tourapiCrawling():
     # for i in range(1, 168):
     #     data.append(str(i))
 
-    key = "RoA41VMcoHYDwXimSIrf%2Fz1qZ3Bf76THkiDp0MVD8NZchLHLkwnMeMXbL6ZCdVZ9JlIjHmaC%2BCQ4c%2FWJJpU5%2FA%3D%3D"
+    key = ""
 
     for i in range(1, 168):
         endpoint = "http://apis.data.go.kr/B551011/KorService1/areaBasedList1?numOfRows=12&pageNo={}&MobileOS=ETC&MobileApp=AppTest&ServiceKey={}&listYN=Y&arrange=A&contentTypeId=&areaCode=2&sigunguCode=&cat1=&cat2=&cat3=".format(
