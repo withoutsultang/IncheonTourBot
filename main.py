@@ -6,13 +6,12 @@ import numpy as np
 
 csv_file = './chatbot/tourInfo.csv'
 
-API_KEY = "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"
+API_KEY = ""
 openai.api_key = API_KEY
 
 chat_model = "gpt-3.5-turbo"
 system_message = "너는 인천 여행 가이드야. 인천 여행 가이드라고 소개하고 모르는 답변이 있으면 고객센터 1234-5678로 연락달라 그래."
 
-# os.environ["OPENAI_API_KEY"] = "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"
 # openai.api_key = os.environ["OPENAI_API_KEY"]
 # def load_csv():
 #     df = pd.read_csv(csv_file, dtype=str)
