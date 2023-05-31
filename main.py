@@ -3,11 +3,11 @@ import openai
 import pandas as pd
 import faiss
 import numpy as np
+from dotenv import load_dotenv
 
 csv_file = './chatbot/tourInfo.csv'
-
-API_KEY = "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"
-openai.api_key = API_KEY
+load_dotenv()
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 chat_model = "gpt-3.5-turbo"
 system_message = "너는 인천 여행 가이드야. 인천 여행 가이드라고 소개하고 모르는 답변이 있으면 고객센터 1234-5678로 연락달라 그래."
@@ -33,10 +33,13 @@ def create_faiss_index():
 
     return df, index
 
-def get_embedding(text, model="text-embedding-ada-002"):
-    text = text.replace("\n", " ")
-    embedding = openai.Embedding.create(input=[text], model=model)
-    return embedding['data'][0]['embedding']
+# def get_embedding(text, model="text-embedding-ada-002") ->:
+#     text = text.replace("\n", " ")
+#     embedding = openai.Embedding.create(input=[text], model=model)
+#     return embedding['data'][0]['embedding']
+
+def get_embedding(text : str, model : str) -> list[float]:
+    model = SentenceTransformer(model)
 
 def search_similar_documents(embedding, index, k=1):
     D, I = index.search(np.array([embedding]), k)
